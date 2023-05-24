@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <title>Mini-project-1</title>
+    <style>
+        body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #dda54a;
+}
+li.nav-item a:hover {
+  color: #451c0d;
+}
+li.nav-item {
+  font-weight: 500;
+  padding: 5px;
+  font-family: 'Comic Sans Ms';
+  font-size: 16px;
+  color: black;
+}
+.navbar {
+  padding: 0 5px 3px 5px;
+  margin: 0;
+  width: 100%;
+  position: sticky;
+}
+.navbar-brand {
+  margin-top: 3px;
+}
+#title {
+    padding-left: 5px;
+}
+h6 {
+  font-weight: 900;
+  margin-top: 2px;
+}
+.dropdown-item {
+  font-size: 13px;
+}
+#slider {
+  position: relative;
+  width: 50%;
+  height: 32vw;
+  margin: 150px auto;
+  font-family: 'Helvetica Neue', sans-serif;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+input[type=radio] {
+  position: relative;
+  top: 108%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  margin: 0 15px 0 0;
+  opacity: 0.4;
+  transform: translateX(-83px);
+  cursor: pointer;
+}
+
+
+input[type=radio]:nth-child(5) {
+  margin-right: 0px;
+}
+
+input[type=radio]:checked {
+  opacity: 1;
+}
+
+
+
+
+#slider label,
+#slider label img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  color: white;
+  font-size: 70px;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 400ms ease;
+}
+
+
+
+/* Slider Functionality */
+
+/* Active Slide */
+#s1:checked ~ #slide1,
+ #s2:checked ~ #slide2,
+  #s3:checked ~ #slide3,
+   #s4:checked ~ #slide4,
+    #s5:checked ~ #slide5 {
+  box-shadow: 0 13px 26px rgba(0,0,0, 0.3), 0 12px 6px rgba(0,0,0, 0.2);
+  transform: translate3d(0%, 0, 0px);
+}
+
+/* Next Slide */
+#s1:checked ~ #slide2,
+ #s2:checked ~ #slide3,
+  #s3:checked ~ #slide4,
+   #s4:checked ~ #slide5,
+    #s5:checked ~ #slide1 {
+  box-shadow: 0 6px 10px rgba(0,0,0, 0.3), 0 2px 2px rgba(0,0,0, 0.2);
+  transform: translate3d(20%, 0, -100px);
+}
+
+
+/* Next to Next Slide */
+#s1:checked ~ #slide3,
+ #s2:checked ~ #slide4,
+  #s3:checked ~ #slide5,
+   #s4:checked ~ #slide1,
+    #s5:checked ~ #slide2 {
+  box-shadow: 0 1px 4px rgba(0,0,0, 0.4);
+  transform: translate3d(40%, 0, -250px);
+}
+
+/* Previous to Previous Slide */
+#s1:checked ~ #slide4,
+ #s2:checked ~ #slide5,
+  #s3:checked ~ #slide1,
+   #s4:checked ~ #slide2,
+    #s5:checked ~ #slide3 {
+  box-shadow: 0 1px 4px rgba(0,0,0, 0.4);
+  transform: translate3d(-40%, 0, -250px);
+}
+
+/* Previous Slide */
+#s1:checked ~ #slide5,
+ #s2:checked ~ #slide1,
+  #s3:checked ~ #slide2,
+   #s4:checked ~ #slide3,
+    #s5:checked ~ #slide4 {
+  box-shadow: 0 6px 10px rgba(0,0,0, 0.3), 0 2px 2px rgba(0,0,0, 0.2);
+  transform: translate3d(-20%, 0, -100px);
+}
+
+    </style>
+  </head>
+  <body>
+    <header id="home">
+    <nav class="navbar navbar-expand-lg ps-2 bg-light shadow">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#home"
+          ><img src="retro.png" width="30px"
+        /><span id="title" style="font-weight: 600;">FreshStart</span></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto pe-5">
+            <li class="nav-item active">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#products">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#review">Review</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+          <div class="navbar-icon pe-3">
+            <a class="nav-icon" href="#"
+              ><img src="heart1.png" width="20px" alt="cart"
+            /></a>
+          </div>
+          <div class="navbar-icon pe-3">
+            <a class="nav-icon" href="#"
+              ><img src="basket.png" width="20px" alt="cart"
+            /></a>
+          </div>
+          <div class="navbar-icon pe-2">
+            <a class="nav-icon" href="#"
+              ><img src="user-icon.png" width="20px" alt="cart"
+            /></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    </header>
+    </div>
+    <section id="slider">
+        <input type="radio" name="slider" id="s1" checked>
+        <input type="radio" name="slider" id="s2">
+        <input type="radio" name="slider" id="s3">
+        <input type="radio" name="slider" id="s4">
+        <input type="radio" name="slider" id="s5">
+      
+        <label for="s1" id="slide1"><img src="slide2.jpeg" alt=""></label>
+        <label for="s2" id="slide2"><img src="slide1.jpeg" alt=""></label>
+        <label for="s3" id="slide3"><img src="cookies.png" alt=""></label>
+        <label for="s4" id="slide4"><img src="slide3.jpeg" alt=""></label>
+        <label for="s5" id="slide5"><img src="slide4.jpeg" alt=""></label>
+      </section>
+    <div class="container-fluid text-center mt-3">
+      <h4 class="display-4 text-light" id="about" style="background-color: #451c0d;">About Us</h4>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class=" col-lg-4 offset-lg-1">
+                <h3>Welcome to FreshStart Bakeshop!</h3><br/> We are a team of passionate bakers and pastry chefs dedicated to creating delicious and high-quality baked goods.<br /><br /> At FreshStart Bakeshop, we believe that every pastry and loaf of bread should be made with the finest ingredients and utmost care. That's why we use only the freshest and most natural ingredients in all of our products, and we take great care in every step of the baking process to ensure that our customers enjoy the best possible taste and texture.<br /><br/>Our team has years of experience in the baking industry, and we are constantly experimenting with new recipes and techniques to bring you the most innovative and delicious baked goods. Whether you're looking for a classic croissant, a decadent chocolate cake, or a hearty loaf of bread, we have something for everyone.<br /><br />Thank you for visiting FreshStart Bakeshop, and we look forward to serving you soon!</p><br /><br />
+            </div>
+            <div class="embed-responsive-item row col-lg-6 offset-lg-1">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/XNXuwrXFHRs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-center mt-3 text-light">
+        <h4 class="display-4" id="products" style="background-color: #451c0d">Our Products!</h4>
+    </div>
+    <div class="container text-center">
+        <div class="row pt-5">
+            <div class="card col-lg-2">
+                <img src="pic1.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Croissant</h5>
+                  <p>classic bread with cheese inside<br />₱35</p>
+                  <a href="#" class="btn btn-warning">Add to Cart</a><button type="button" class="btn-btnwarning"
+                  </button>
+                </div>
+            </div>
+            <div class="card col-lg-2">
+                <img src="pic2.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Double Choco</h5>
+                  <p>doubled choco with toppings on top<br />₱42</p>
+                  <a href="#" class="btn btn-warning">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card col-lg-2">
+                <img src="pic3.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Sansrival</h5>
+                    <p>deliciously baked bread<br />₱55</p>
+                  <a href="#" class="btn btn-warning">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card col-lg-2">
+                <img src="pic4.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Mini-Pie</h5>
+                  <p>soft pie that has dark-butter fillings<br />₱30</p>
+                  <a href="#" class="btn btn-warning">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card col-lg-2">
+                <img src="pic5.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Spring Rolls</h5>
+                  <p>rolled bread and coat with sugar<br />₱25</p>
+                  <a href="#" class="btn btn-warning">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card col-lg-2">
+                <img src="pic6.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Flip-Flop</h5>
+                  <p>soft cupcake that has sweet fillings<br />₱66</p>
+                  <a href="#" class="btn btn-warning">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-5">
+            <div class="card col-lg-2">
+                <img src="pic7.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Classic Go</h5>
+                  <p>tart that has top cream<br />₱70</p>
+                  <a href="#" class="btn btn-warning">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card col-lg-2">
+                <img src="pic8.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Spiral Choco</h5>
+                  <p>fresly baked choco spiral bread<br />₱25</p>
+                  <a href="#" class="btn btn-warning">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card col-lg-2">
+                <img src="pic9.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Spiral Cheese</h5>
+                  <p>fresly baked cheese spiral bread<br />₱30</p>
+                  <a href="#" class="btn btn-warning">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card col-lg-2">
+                <img src="pic10.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Caramel Crush</h5>
+                  <p>caramelized bread with adobo fillings<br />₱48</p>
+                  <a href="#" class="btn btn-warning">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card col-lg-2">
+                <img src="pic11.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Banana Loaf</h5>
+                  <p>banana loaf with chocolate chips<br />₱99</p>
+                  <a href="#" class="btn btn-warning">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card col-lg-2">
+                <img src="pic12.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Peach-Fruitas</h5>
+                  <p>tart with cherry and blueberry top<br />₱88</p>
+                  <a href="#" class="btn btn-warning">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-center my-5">
+        <h4 class="display-4 text-light" id="review" style="background-color: #451c0d">Reviews</h4>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="row text-center">
+        <div class="col-md-2 mb-5 mb-md-0">
+          <div class="d-flex justify-content-center mb-2">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
+              class="rounded-circle shadow-1-strong" width="150" height="150" />
+          </div>
+          <h5 class="mb-3">Maria Smantha</h5>
+          <p class="px-xl-3">
+            <i class="fas fa-quote-left pe-2"></i>"Great bread and pastry!"<br />★★★★★
+          </p>
+        </div>
+        <div class="col-md-2 mb-5 mb-md-0">
+          <div class="d-flex justify-content-center mb-2">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
+              class="rounded-circle shadow-1-strong" width="150" height="150" />
+          </div>
+          <h5 class="mb-3">Lisa Cudrow</h5>
+          <p class="px-xl-3">
+            <i class="fas fa-quote-left pe-2"></i>"Super Love it! Will come back!"<br />★★★★★
+          </p>
+        </div>
+        <div class="col-md-2 mb-0">
+          <div class="d-flex justify-content-center mb-2">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp"
+              class="rounded-circle shadow-1-strong" width="150" height="150" />
+          </div>
+          <h5 class="mb-3">John Smith</h5>
+          <p class="px-xl-3">
+            <i class="fas fa-quote-left pe-2"></i>"Nice packaging! I like the taste."<br />★★★★
+          </p>
+        </div>
+        <div class="col-md-2 mb-0">
+            <div class="d-flex justify-content-center mb-2">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
+                class="rounded-circle shadow-1-strong" width="150" height="150" />
+            </div>
+            <h5 class="mb-3">Selena Gomez</h5>
+            <p class="px-xl-3">
+              <i class="fas fa-quote-left pe-2"></i>"It smells good. I will definitely buy again within this month."<br />★★★★★
+            </p>
+          </div>
+          <div class="col-md-2 mb-0">
+            <div class="d-flex justify-content-center mb-2">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp"
+                class="rounded-circle shadow-1-strong" width="150" height="150" />
+            </div>
+            <h5 class="mb-3">Maureen Latisha</h5>
+            <p class="px-xl-3">
+              <i class="fas fa-quote-left pe-2"></i>"My heart is so happy to taste it again."<br />★★★★★
+            </p>
+          </div>
+          <div class="col-md-2 mb-0">
+            <div class="d-flex justify-content-center mb-2">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
+                class="rounded-circle shadow-1-strong" width="150" height="150" />
+            </div>
+            <h5>Sarah Megan</h5>
+            <p class="px-xl-3">
+              <i class="fas fa-quote-left pe-2"></i>"I waited for 2 days to have it delivered.<br />★★★
+            </p><br /><br />
+          </div>
+      </div>
+      <div class="container-fluid text-center mt-3" style="background-color: #451c0d;">
+        <div class="footer-section">
+            <footer class="footer-distributed">
+                <div class="footer-left mt-3">
+                    <a href="#home"><img id="contact" src="retro.png" width="100px"></a>
+                    <p class="footer-links">
+                        <a href="#home" class="text-warning">Home</a>
+                        <a href="#about" class="text-warning">About</a>
+                        <a href="#products" class="text-warning">Products</a>
+                        <a href="#review" class="text-warning">Review</a>
+                        <a href="#contact" class="text-warning">Contact</a</p>
+                            <p class="text-warning">FreshStart Bakeshop © 2023</p>
+                </div>
+                <div class="footer-center">
+                    <div>
+                        <a class="text-warning" href="https://goo.gl/maps/ZnewSxnYyhmDHEJV8"><p><span>98D Banaag St.</span>Pasig City, Manila, Philippines</p></a>
+                    </div>
+                <div class="text-warning">
+                    <p>+63-919-820-5431</p>
+                </div>
+                <div class="text-warning">
+                    <p>freshstartbakeshop2023@gmail.com</p>
+                </div>
+                </div>
+                <div class="footer-right">
+                    <p class="footer-company-about" style="color: white;">
+                        <span>Please follow us. Thank you.</p>
+                        <div class="footer-icons mb-3">
+                            <a href="#"><img src="fb-icon.png" width="30px"></a>
+                            <a href="#"><img src="instagram-icon.png" width="30px"></a>
+                            <a href="#"><img src="twitter-icon.png" width="35px"></a>
+                            <a href="#"><img src="tiktok-icon.png" width="35px"></a>
+                        </div>
+                    </div>
+            </footer>
+  </body>
+</html>
